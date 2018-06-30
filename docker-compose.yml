@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: strider-mongodb
+    volumes:
+      - ./mongo/db:/data/db
+  web:
+    image: macropin/strider
+    container_name: strider-web
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:8000"
+    volumes:
+      - ./strider:/data
+  install:
+    image: macropin/strider
+    depends_on:
+      - mongodb
+    volumes:
+      - ./strider:/data
+  update:
+    image: macropin/strider
+    depends_on:
+      - mongodb
+    volumes:
+      - ./strider:/data
