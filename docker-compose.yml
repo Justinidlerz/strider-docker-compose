@@ -6,22 +6,24 @@ services:
     volumes:
       - ./mongo/db:/data/db
   web:
-    image: macropin/strider
+    image: local/strider
     container_name: strider-web
+    environment:
+      - DB_URI=mongodb://strider-mongodb:27017/strider
     depends_on:
       - mongodb
     ports:
-      - "3000:8000"
+      - 3000:3000
     volumes:
       - ./strider:/data
   install:
-    image: macropin/strider
+    image: local/strider
     depends_on:
       - mongodb
     volumes:
       - ./strider:/data
   update:
-    image: macropin/strider
+    image: local/strider
     depends_on:
       - mongodb
     volumes:

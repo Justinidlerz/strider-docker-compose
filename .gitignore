@@ -1,0 +1,4 @@
+/mongo/db/*
+!/mongo/db/.gitkeep
+/strider/*
+!/strider/.gitkeep
