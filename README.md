@@ -2,7 +2,7 @@
 strider docker compose
 
 ## Usage
-`docker build -t local/strider .`  
+`docker build -t local/strider .` or update `docker-compose.yml` web image to `justinidlerz/strider`   
 `docker-compose up install` first time to run  
 `docker-compose up web` start or with `-d` 
    
