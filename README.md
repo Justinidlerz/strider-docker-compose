@@ -1,6 +1,5 @@
 # strider-docker-compose
-strider docker compose
-
+A docker-compose config to quick startup [strider](https://github.com/Strider-CD/strider)
 ## Usage
 Clone project: `git clone https://github.com/Justinidlerz/strider-docker-compose.git strider`  
 Set root permission: `cd strider && chmod -R 777 .`
