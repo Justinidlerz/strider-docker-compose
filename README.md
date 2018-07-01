@@ -2,9 +2,9 @@
 A docker-compose config to quick startup [strider](https://github.com/Strider-CD/strider)
 ## Usage
 Clone project: `git clone https://github.com/Justinidlerz/strider-docker-compose.git strider`  
-Set root permission: `cd strider && chmod -R 777 .`
-First time to start: `docker-compose up install` with `-d` 
-Start server: `docker-compose up web` start or with `-d` 
+Set root permission: `cd strider && chmod -R 777 .`  
+First time to start: `docker-compose up install` with `-d`  
+Start server: `docker-compose up web` start or with `-d`  
    
 ### Default strider administrator account:
  **Email:** admin@strider.com   
