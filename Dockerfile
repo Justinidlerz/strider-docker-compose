@@ -13,6 +13,8 @@ ENV MONGO_HOST=strider-mongodb
 
 RUN useradd --comment "Strider CD" --home ${STRIDER_HOME} strider && mkdir -p ${STRIDER_HOME} && chown strider:strider ${STRIDER_HOME}
 
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y gcc make build-essential
+
 VOLUME [ "$STRIDER_HOME" ]
 RUN mkdir -p $STRIDER_SRC && cd $STRIDER_SRC && \
     # Checkout into $STRIDER_SRC
