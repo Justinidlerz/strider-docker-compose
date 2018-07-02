@@ -9,7 +9,6 @@ ENV STRIDER_GIT_SRC=https://github.com/Strider-CD/strider.git
 ENV STRIDER_HOME=/data
 ENV STRIDER_SRC=/opt/strider
 ENV NODE_ENV=production
-ENV MONGO_HOST=strider-mongodb
 
 RUN useradd --comment "Strider CD" --home ${STRIDER_HOME} strider && mkdir -p ${STRIDER_HOME} && chown strider:strider ${STRIDER_HOME}
 

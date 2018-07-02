@@ -5,17 +5,19 @@ services:
     container_name: strider-mongodb
     volumes:
       - ./mongo/db:/data/db
+    ports:
+      - 27000:27017
   web:
     image: justinidlerz/strider
     container_name: strider-web
     environment:
-      - DB_URI=mongodb://strider-mongodb:27017/strider
       - STRIDER_ADMIN_PASSWORD=123456
       - STRIDER_ADMIN_EMAIL=admin@strider.com
+      - DB_URI=mongodb://strider-mongodb:27017/strider
     depends_on:
       - mongodb
     ports:
-      - 3000:3000
+      - 8080:3000
     volumes:
       - ./strider:/data
   install:
@@ -24,5 +26,5 @@ services:
       - mongodb
     volumes:
       - ./strider:/data
-    ports:
-      - 3000:3000
+    entrypoint:
+      - node
