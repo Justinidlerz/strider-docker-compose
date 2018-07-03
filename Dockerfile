@@ -24,6 +24,9 @@ RUN mkdir -p $STRIDER_SRC && cd $STRIDER_SRC && \
     npm install --registry=https://registry.npm.taobao.org && \
     # FIX: https://github.com/Strider-CD/strider/pull/1056
     npm install morgan@1.5.0 --registry=https://registry.npm.taobao.org && \
+    # FIX: Default install strider-docker-runner v1.3.0
+    cd node_modules && git clone https://github.com/Strider-CD/strider-docker-runner.git && \
+    cd strider-docker-runner && git checkout 1.3.0 && npm install && rm -rf .git && cd ../../ && \
     # Create link to strider home dir so the modules can be used as a cache
     mv node_modules node_modules.cache && ln -s ${STRIDER_HOME}/node_modules node_modules && \
     # Allow strider user to update .restart file
