@@ -1,0 +1,5 @@
+Host *
+	PubkeyAuthentication yes
+	StrictHostKeyChecking no
+	PasswordAuthentication no
+	IdentityFile /etc/.ssh/id_rsa

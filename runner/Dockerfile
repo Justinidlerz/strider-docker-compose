@@ -9,9 +9,16 @@ VOLUME [ "$STRIDER_HOME" ]
 RUN git clone https://github.com/tj/n.git && cd n && make install && \
     n 8.11.3 && npm install -g strider-docker-slave@1.*.*
 
+RUN apt-get install -y unzip zip
+
+COPY jq /usr/bin
+COPY .ssh /etc/.ssh
+COPY ssh_config /etc/ssh/
+
 RUN chown -R strider:strider /home
 
-CMD supervisord -c /etc/supervisor/supervisord.conf && su strider -c 'strider-docker-slave'
+CMD supervisord -c /etc/supervisor/supervisord.conf && \
+    su strider -c 'strider-docker-slave'
 
 WORKDIR /home/strider/workspace
 ENV HOME /home/strider
