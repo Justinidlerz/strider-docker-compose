@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 set -e
+echo "sleep 10s"
+sleep 10s
+echo "sleep 10s over"
 
 # Allow bypass initialisation
 if [ "$1" != "strider" ]; then
@@ -17,11 +20,11 @@ if [ -z "$DB_URI" ]; then
 fi
 
 # Update npm cache if no modules exist
-if [ ! -d "${STRIDER_HOME}/node_modules" ]; then
-    echo "$(basename $0) >> Copying node_modules from cache..."
-    mkdir -p ${STRIDER_HOME}/node_modules
-    cp -r --preserve=mode,timestamps,links,xattr ${STRIDER_SRC}/node_modules.cache/* ${STRIDER_HOME}/node_modules/
-fi
+# if [ ! -d "${STRIDER_HOME}/node_modules" ]; then
+#     echo "$(basename $0) >> Copying node_modules from cache..."
+#     mkdir -p ${STRIDER_HOME}/node_modules
+#     cp -r --preserve=mode,timestamps,links,xattr ${STRIDER_SRC}/node_modules.cache/* ${STRIDER_HOME}/node_modules/
+# fi
 
 # Create admin user if variables defined
 if [ ! -z "$STRIDER_ADMIN_EMAIL" -a ! -z "$STRIDER_ADMIN_PASSWORD" ]; then

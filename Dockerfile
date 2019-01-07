@@ -28,18 +28,18 @@ RUN mkdir -p $STRIDER_SRC && cd $STRIDER_SRC && \
     cd node_modules && \
     git clone https://github.com/Strider-CD/strider-docker-runner.git && \
     cd strider-docker-runner && git checkout 1.3.0 && npm install && rm -rf .git && cd ../ && \
-    rm -rf strider-gitlab && git clone https://github.com/Justinidlerz/strider-gitlab.git && \
+    rm -rf strider-gitlab && \
+    git clone https://github.com/Justinidlerz/strider-gitlab.git && \
     cd strider-gitlab && npm install && rm -rf .git && cd ../ && \
     cd ../ && \
     # Create link to strider home dir so the modules can be used as a cache
-    mv node_modules node_modules.cache && ln -s ${STRIDER_HOME}/node_modules node_modules && \
+    # mv node_modules node_modules.cache && ln -s ${STRIDER_HOME}/node_modules node_modules && \
     # Allow strider user to update .restart file
     chown strider:strider ${STRIDER_SRC}/.restart && \
     # Cleanup Upstream cruft
     rm -rf /tmp/*
 
 ENV PATH ${STRIDER_SRC}/bin:$PATH
-
 COPY entry.sh /
 USER strider
 ENTRYPOINT ["/entry.sh"]
