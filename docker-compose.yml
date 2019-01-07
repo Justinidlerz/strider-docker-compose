@@ -8,7 +8,9 @@ services:
     ports:
       - 27000:27017
   web:
-    image: justinidlerz/strider
+    build:
+      context: .
+    # image: local/strider-docker
     container_name: strider-web
     environment:
       - STRIDER_ADMIN_PASSWORD=123456
@@ -21,7 +23,8 @@ services:
     volumes:
       - ./strider:/data
   install:
-    image: justinidlerz/strider
+    build:
+      context: .
     depends_on:
       - mongodb
     volumes:
