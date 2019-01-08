@@ -26,10 +26,10 @@ RUN mkdir -p $STRIDER_SRC && cd $STRIDER_SRC && \
     npm install morgan@1.5.0 --registry=https://registry.npm.taobao.org && \
     # FIX: Default install strider-docker-runner v1.3.0
     cd node_modules && \
-    git clone https://github.com/Strider-CD/strider-docker-runner.git && \
-    cd strider-docker-runner && git checkout 1.3.0 && npm install && rm -rf .git && cd ../ && \
+    git clone https://github.com/Strider-CD/strider-docker-runner.git --branch 1.3.0 && \
+    cd strider-docker-runner && npm install && rm -rf .git && cd ../ && \
     rm -rf strider-gitlab && \
-    git clone https://github.com/Justinidlerz/strider-gitlab.git && \
+    git clone https://github.com/Justinidlerz/strider-gitlab.git --branch 1.2.8 && \
     cd strider-gitlab && npm install && rm -rf .git && cd ../ && \
     cd ../ && \
     # Create link to strider home dir so the modules can be used as a cache
