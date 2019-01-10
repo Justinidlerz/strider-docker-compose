@@ -33,7 +33,7 @@ RUN mkdir -p $STRIDER_SRC && cd $STRIDER_SRC && \
     cd strider-gitlab && npm install && rm -rf .git && cd ../ && \
     cd ../ && \
     # Create link to strider home dir so the modules can be used as a cache
-    # mv node_modules node_modules.cache && ln -s ${STRIDER_HOME}/node_modules node_modules && \
+    mv node_modules node_modules.cache && ln -s ${STRIDER_HOME}/node_modules node_modules && \
     # Allow strider user to update .restart file
     chown strider:strider ${STRIDER_SRC}/.restart && \
     # Cleanup Upstream cruft
