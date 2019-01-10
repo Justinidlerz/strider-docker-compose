@@ -25,11 +25,11 @@ versionCompare() {
     fi
 }
 
-if [ "$1" == "version" ]; then
+if [ "$1" == "version" ] ; then
     sendVersion $2 $3
-elif [ "$1" == "fire" ]; then
+elif [ "$1" == "fire" ] ; then
     fireContent $2 $3 $4
-elif [ "$1" == "compare" ]; then
+elif [ "$1" == "compare" ] ; then
     versionCompare $2 $3
 else 
     echo "  "

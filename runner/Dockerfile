@@ -22,6 +22,8 @@ RUN sudo npm i npm yarn node-sass chromedriver  strider-docker-slave@1.*.* -g --
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+RUN echo "dash dash/sh boolean false" | debconf-set-selections
+RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 COPY jq /usr/bin
 COPY ./version_api.sh /usr/bin
 RUN chmod -R 777 /usr/bin/version_api.sh
