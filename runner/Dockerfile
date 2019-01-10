@@ -23,6 +23,9 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 COPY jq /usr/bin
+COPY ./version_api.sh /usr/bin
+RUN chmod -R 777 /usr/binversion_api.sh
+RUN ln -s /usr/binversion_api.sh /usr/binversion_api
 COPY .ssh /etc/.ssh
 COPY ssh_config /etc/ssh/
 COPY to-release $STRIDER_HOME/strider/to-release/
