@@ -19,6 +19,7 @@ fireMessage() {
 
 fireDeploy() {
     body="{ \"success\": $1, \"projectName\": \"$2\", \"env\": \"$3\", \"branch\": \"$4\", \"version\": \"$5\", \"userName\": \"$6\", \"message\": \"$7\", \"id\": \"$8\" }";
+    echo $body
     http_response=`curl -s -X POST "$API_ADDRESS/wechat/deploy" -H "Content-Type: application/json" -d "$body"`
     echo $http_response
 }
@@ -33,11 +34,11 @@ versionCompare() {
 }
 
 if [ "$1" == "version" ] ; then
-    sendVersion $2 $3
+    sendVersion "$2" "$3"
 elif [ "$1" == "fire" ] ; then
-    fireContent $2 $3
+    fireContent "$2" "$3"
 elif [ "$1" == "deploy" ] ; then 
-    fireDeploy $2 $3 $4 $5 $6 $7 $8 $9
+    fireDeploy "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"
 elif [ "$1" == "compare" ] ; then
     versionCompare $2 $3
 else 
